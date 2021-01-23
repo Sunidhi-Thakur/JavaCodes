@@ -1,5 +1,6 @@
 package javacodes;
 import java.io.*;
+
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         int out[] = new int[2];
@@ -18,7 +19,7 @@ class Solution {
     }
 }
 
-public class JavaCodes {
+public class TwoSum {
     public static void main(String[] args)throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter the length of array");
