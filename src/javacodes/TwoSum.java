@@ -33,7 +33,7 @@ public class TwoSum {
         Solution S = new Solution();
         int ans[] = S.twoSum(nums, target);
         System.out.print("Indices that produce target "+target+" = ");
-        System.out.println("["+ans[0]+","+ans[1]+"]");
+       System.out.println("["+ans[0]+","+ans[1]+"]");
         
     }
     
