@@ -1,15 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package RecursionCodes;
 
 import java.util.Scanner;
 
 /**
  *
- * @author sunid
+ * @author Sunidhi Thakur
+ *
+ * Gives maximum element in the array.
+ *
+ * First and last position of key element entered by the user.
+ *
+ * All indices where the key element is found.
  */
 public class ArrayMax {
 
@@ -25,34 +26,59 @@ public class ArrayMax {
         System.out.print("Enter element whose first and last occurence is to be found: ");
         int key = sc.nextInt();
         int fIndex = firstOccurence(A, 0, key);
-        int lIndex = lastOccurence(A, size-1, key);
-        int m = max(A,0);
-        System.out.println("Element " +key+" occured first at index "+fIndex);
-        System.out.println("Element " +key+" occured last at index "+lIndex);
-        System.out.println("Maximum element = " +m);
+        int lIndex = lastOccurence(A, size - 1, key);
+        int[] aIndex = allOccurences(A, 0, key, 0);
+        int m = max(A, 0);
+        System.out.println("Element " + key + " occured first at index " + fIndex);
+        System.out.println("Element " + key + " occured last at index " + lIndex);
+        System.out.print("All indices of key element " + key + " = [");
+        for (int i = 0; i < aIndex.length; i++) {
+            System.out.print(aIndex[i]+" ");
+        }
+        System.out.println("]\nMaximum element = " + m);
     }
 
     private static int max(int[] A, int i) {
-        if(i == A.length-1)
+        if (i == A.length - 1) {
             return A[i];
-        return Math.max(A[i], max(A,i+1));
+        }
+        return Math.max(A[i], max(A, i + 1));
     }
 
-    private static int firstOccurence(int[] A,int i, int key) {
-        if(i == A.length)
+    private static int firstOccurence(int[] A, int i, int key) {
+        if (i == A.length) {
             return -1;
-        if(A[i] == key)
+        }
+        if (A[i] == key) {
             return i;
-        else
-            return firstOccurence(A,i+1,key);   
+        } else {
+            return firstOccurence(A, i + 1, key);
+        }
     }
 
     private static int lastOccurence(int[] A, int i, int key) {
-        if(i == -1)
+        if (i == -1) {
             return -1;
-        if(A[i] == key)
+        }
+        if (A[i] == key) {
             return i;
-        else
-            return lastOccurence(A,i-1,key);
+        } else {
+            return lastOccurence(A, i - 1, key);
+        }
+    }
+
+    private static int[] allOccurences(int[] A, int i, int key, int f) {
+        if (i == A.length) {
+            return new int[f];
+        }
+        if (A[i] == key) {
+            int[] arr = allOccurences(A, i + 1, key, f + 1);
+            arr[f] = i;
+            return arr;
+        } else {
+            int[] arr = allOccurences(A, i + 1, key, f);
+            return arr;
+        }
+
     }
 }
