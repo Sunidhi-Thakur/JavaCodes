@@ -31,6 +31,7 @@ public class MazePath{
         int dc = Integer.parseInt(br.readLine());
         
         ArrayList<String> ans = getMazePath(sr-1, sc-1, dr-1, dc-1);
+        System.out.println("h-> horizonatl move, v->vertical move");
         System.out.println("The paths from ( "+ sr +"," + sc+") to ("+ dr +","+dc+") ="+ ans);
         System.out.println("The number of ways are "+ans.size());
     }
